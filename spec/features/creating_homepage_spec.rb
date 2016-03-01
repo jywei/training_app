@@ -5,8 +5,8 @@ require "rails_helper"
     scenario do
       visit '/'
 
-      expect(page).to have_link('Athletes Den')
+      expect(page).to have_link('Motiv-Action')
       expect(page).to have_link('Home')
-      expect(page).to have_content('Workout Lounge')
+      expect(page).to have_content('Work it out!')
     end
 end
