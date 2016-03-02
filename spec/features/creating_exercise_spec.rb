@@ -1,0 +1,27 @@
+require "rails_helper"
+
+RSpec.feature "Creating exercise" do
+
+  before do
+    @john = User.create(email: "john@example.com", password: "password")
+    login_as(@john)
+  end
+
+  scenario "with valid inputs" do
+    visit '/'
+
+    click_link "My Locker"
+    click_link "New Workout"
+    expect(page).to have_link("Back")
+
+    fill_in "Duration", with: 70
+    fill_in "Details", with: "weight-lifting"
+    fill_in "Activity Date", with: "2016-03-15"
+    click_button "Create Exercise"
+
+    expect(page).to have_content("Exercise has been created")
+
+    exercise = Exercise.last
+    expect(page.current_page).to eq(user_exercise_path(@john, exercise))
+  end
+end
