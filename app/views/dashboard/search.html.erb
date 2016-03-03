@@ -1,0 +1,9 @@
+<div class="row search-result">
+  <% @strivers.each do |striver| %>
+    <div class="col-md-4 col-md-offset-4 well member">
+      <%= striver.full_name %>
+    </div>
+  <% end %>
+</div>
+
+<%= will_paginate @strivers, renderer: BootstrapPagination::Rails %>
