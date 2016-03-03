@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
+    @exercises = current_user.exercises.all
   end
 
   def new
