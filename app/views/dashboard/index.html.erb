@@ -2,3 +2,17 @@
   <h1>Work Out Hard!</h1>
   <p>Eat clean, train dirty!</p>
 </div>
+
+<div class="row">
+  <div class="col-md-10">
+    <h2>Strivers' List</h2>
+  </div>
+</div>
+
+<div class="row">
+  <% @strivers.each do |striver| %>
+  <div class="col-md-10 well member">
+    <%= striver.full_name %>
+  </div>
+  <% end %>
+</div>

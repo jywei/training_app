@@ -10,9 +10,9 @@ RSpec.feature "Listing members" do
   scenario "Show a list of registered memebers" do
     visit "/"
 
-    expect(page).to have_content("List of Strivers")
-    expect(page).to have_content("@john.full_name")
-    expect(page).to have_content("@jane.full_name")
+    expect(page).to have_content("Strivers' List")
+    expect(page).to have_content(@john.full_name)
+    expect(page).to have_content(@jane.full_name)
   end
 
 end

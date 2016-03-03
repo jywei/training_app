@@ -7,6 +7,6 @@ require "rails_helper"
 
       expect(page).to have_link('Motiv-Action')
       expect(page).to have_link('Home')
-      expect(page).to have_content('Work it out!')
+      expect(page).to have_content('Work Out Hard!')
     end
 end
