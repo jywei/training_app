@@ -3,11 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   has_many :exercises
+
   validates :first_name, presence: true
   validates :last_name, presence: true
+
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
+
   self.per_page = 3
 
   def full_name
