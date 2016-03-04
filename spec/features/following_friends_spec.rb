@@ -1,16 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.feature "Following friends" do
-
+RSpec.feature "[Following Friends]" do
   before do
-
-    @john = User.create(first_name: "John", last_name: "Doe", email: "johnd@example.com", password: "password")
-    @peter = User.create(first_name: "Peter", last_name: "Crouch", email: "peterc@example.com", password: "password")
+    @john = User.create!(first_name: "John", last_name: "Doe", email: "john@server.com", password: "password")
+    @peter = User.create!(first_name: "Peter", last_name: "Doe", email: "peter@server.com", password: "password")
     login_as(@john)
-
   end
 
-  scenario "if signin success" do
+  scenario "If signed in succeeds" do
     visit "/"
 
     expect(page).to have_content(@john.full_name)
@@ -22,5 +19,4 @@ RSpec.feature "Following friends" do
 
     expect(page).not_to have_link("Follow", :href => "/friendships?friend_id=#{@peter.id}")
   end
-
 end

@@ -3,9 +3,16 @@ class FriendshipsController < ApplicationController
 
   def create
     friend = User.find(params[:friend_id])
-    Friendship.create(friendship_params.merge!(friend_id: params[:firend_id],
-      user_id: current_user.id)) unless current_user.follows_or_same?(friend)
+    Friendship.create(friendship_params.merge!(friend_id: params[:friend_id], user_id: current_user.id)) unless current_user.follows_or_same?(friend)
+
+    if friend.save
+      flash[:success] = "You have successfully followed #{friend.first_name}"
+    else
+      flash[:danger] = "You have failed to follow #{friend.full_name}"
+    end
+
     redirect_to root_path
+
   end
 
   private
