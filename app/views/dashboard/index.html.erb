@@ -14,6 +14,10 @@
   <% @strivers.each do |striver| %>
   <div class="col-md-10 well member">
     <%= striver.full_name %>
+    <% if current_user %>
+      <%= link_to "Follow", friendships_path(friend_id: striver.id), method: :post,
+        class: "btn btn-primary pull-right" unless current_user.follows_or_same?(striver) %>
+    <% end %>
   </div>
   <% end %>
 </div>
