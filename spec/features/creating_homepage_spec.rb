@@ -6,7 +6,6 @@ require "rails_helper"
       visit '/'
 
       expect(page).to have_link('Motiv-Action')
-      expect(page).to have_link('Home')
       expect(page).to have_content('Work Out Hard!')
     end
 end

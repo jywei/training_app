@@ -11,11 +11,6 @@
         <%= link_to "Motiv-Action", root_path, class: "navbar-brand" %>
       </div>
       <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><%= link_to "Home", root_path %>
-            <span class="sr-only">(current)</span>
-          </li>
-        </ul>
         <%= form_tag(search_dashboard_path, class: "navbar-form navbar-left", role: "search") do %>
           <div class="form-group">
             <%= text_field_tag :search_name, nil, placeholder: "Search for Friends", class: "form-control" %>
@@ -24,7 +19,10 @@
         <% end %>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li><%= link_to "My Locker", user_exercises_path(current_user) %></li>
+            <li class="active">
+              <%= link_to "My Locker", user_exercises_path(current_user) %>
+              <span class="sr-only">(current)</span>
+            </li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <div class="navbar-right">
               <p class="navbar-text navbar-whom">

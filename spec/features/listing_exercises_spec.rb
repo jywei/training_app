@@ -31,7 +31,7 @@ RSpec.feature "Listing exercises" do
     click_link "My Locker"
 
     expect(page).to have_content("My Buddies")
-    expect(page).to have_link(@sarah.full_name)
+    expect(page).to have_content(@sarah.first_name)
     expect(page).to have_link("Unfollow")
   end
 
