@@ -1,4 +1,4 @@
-<div class="col-md-12 col-xs-12">
+<div class="col-md-8 col-xs-12">
   <% unless @exercises.empty? %>
   <h2>All Records</h2>
 
@@ -43,4 +43,40 @@
   <%= content_tag :div, "", id: "chart", data: {workouts: @exercises} %>
   <br>
   <br>
+</div>
+
+<div class="col-md-4 col-xs-12">
+  <h2 class="text-left">My Buddies</h2>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Action</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td>
+              <div class="col-md-6 friend_name">
+                <%= link_to friend.first_name, friendship_path(current_user.current_friendship(friend)) %>
+              </div>
+            </td>
+            <td>
+              <div class="col-md-3">
+                <div class="btn-unfollow">
+                  <%= link_to "Unfollow", friendship_path(current_user.current_friendship(friend)),
+                    method: :delete, data: { confirm: "Are you sure?" },
+                    class: "btn btn-xs btn-danger link" %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
 </div>

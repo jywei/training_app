@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
     friendships.map(&:friend).include?(followee) || self == followee
   end
 
+  def current_friendship(friend)
+    friendships.where(friend: friend).first
+  end
+
 end
