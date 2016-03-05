@@ -12,7 +12,11 @@ class FriendshipsController < ApplicationController
     end
 
     redirect_to root_path
+  end
 
+  def show
+    @friend = Friendship.find(params[:id]).friend
+    @exercises = @friend.exercises.all
   end
 
   private
