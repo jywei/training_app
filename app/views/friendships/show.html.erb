@@ -33,3 +33,48 @@
 
   <br>
 </div>
+
+<div class="col-md-4 col-xs-12">
+  <h2 class="text-left">My Buddies</h2>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Action</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td>
+              <div class="col-md-6 friend_name">
+                <%= friend.first_name %>
+              </div>
+            </td>
+            <td>
+
+              <div class="col-md-3">
+                <div class="btn-details">
+                  <%= link_to "Details", friendship_path(current_user.current_friendship(friend)),
+                    class: "btn btn-xs btn-primary link" %>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="btn-unfollow">
+                  <%= link_to "Unfollow", friendship_path(current_user.current_friendship(friend)),
+                    method: :delete, data: { confirm: "Are you sure?" },
+                    class: "btn btn-xs btn-danger link" %>
+                </div>
+              </div>
+
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+</div>
