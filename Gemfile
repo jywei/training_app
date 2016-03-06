@@ -14,7 +14,7 @@ gem 'jquery-ui-rails', '5.0.5'
 
 gem 'will_paginate-bootstrap'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -49,6 +49,8 @@ group :development, :test do
 
   gem 'spring-commands-rspec'
 
+  gem 'sqlite3'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
@@ -63,6 +65,13 @@ end
 
 group :test do
   gem 'capybara', '2.4.4'
+
+end
+
+group :production do
+  gem 'pg'
+
+  gem 'rails_12factor'
 
 end
 
